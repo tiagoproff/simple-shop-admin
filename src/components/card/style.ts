@@ -20,16 +20,24 @@ export const Title = styled.p`
   line-height: 100%;
 `;
 export const Content = styled.div``;
-export const Footer = styled.div``;
+export const Footer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+`;
 export const Prices = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 `;
+
 export const Price = styled.span`
+  color: red;
+  text-decoration-line: line-through;
+
   &::before {
     content: 'R$ ';
-    color: 'green';
+    color: yellow;
     font-weight: 600;
   }
 `;
