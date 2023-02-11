@@ -1,4 +1,19 @@
+import { useEffect, useState } from 'react';
+
+import Card from '../components/card';
+
+import service, { GetProductsResponse } from 'services/product-service';
+import Product from 'interfaces/product';
+
 export default function Root() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    service
+      .GetProducts()
+      .then((data: GetProductsResponse) => setProducts(data.data.products));
+  }, []);
+
   return (
     <>
       <div id="sidebar">
@@ -30,7 +45,20 @@ export default function Root() {
           </ul>
         </nav>
       </div>
-      <div id="detail"></div>
+      <div id="detail">
+        <div
+          className="products"
+          style={{
+            display: 'grid',
+            gap: 16,
+            gridTemplateColumns: '1fr 1fr 1fr',
+          }}
+        >
+          {products.map(({ thumbnail }) => (
+            <Card thumbnail={thumbnail} />
+          ))}
+        </div>
+      </div>
     </>
   );
 }
