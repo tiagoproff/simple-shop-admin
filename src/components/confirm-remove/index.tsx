@@ -4,7 +4,7 @@ import Dialog, {
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from 'components/lib/dialog';
+} from 'lib/dialog';
 
 import { useDialog, useDialogDispatch } from 'hooks/useDialog';
 
