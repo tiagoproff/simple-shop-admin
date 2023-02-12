@@ -1,5 +1,3 @@
-//import { CustomerDTO } from '../models/dto/customer.dto';
-import { AxiosResponse } from 'axios';
 import api from 'helpers/api';
 
 import Product from 'interfaces/product';
@@ -35,6 +33,10 @@ const GetProducts = async () => {
   return await api.get(`products/?limit=10`);
 };
 
+const RemoveProduct = async (productId: number) => {
+  return await api.delete(`products/${productId}`);
+};
+
 /*
 fetch('https://dummyjson.com/products/add', {
   method: 'POST',
@@ -66,6 +68,7 @@ const productService = {
   CreateProduct,
   //UpdateProduct,
   GetProduct,
+  RemoveProduct,
   GetProducts,
 };
 

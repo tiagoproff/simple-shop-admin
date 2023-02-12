@@ -14,6 +14,7 @@ import {
 } from './style';
 import { useDialogDispatch } from 'hooks/useDialog';
 import { SHOW_CONFIRM } from 'interfaces/dialog';
+import service from 'services/product-service';
 
 interface CardProps extends React.BaseHTMLAttributes<any> {
   productId: number;
@@ -40,7 +41,7 @@ export default function Card({ thumbnail, productId, ...props }: CardProps) {
                 dialog({
                   type: SHOW_CONFIRM,
                   message: 'Deseja remover este produto?',
-                  onConfirm: () => console.log('REMOVIDO'),
+                  onConfirm: () => service.RemoveProduct(productId),
                 });
               }}
             >
