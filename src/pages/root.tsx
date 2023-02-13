@@ -15,7 +15,7 @@ export default function Root() {
               <input
                 id="q"
                 aria-label="Search contacts"
-                placeholder="Search"
+                placeholder="Pesquisar"
                 type="search"
                 name="q"
               />
@@ -23,16 +23,21 @@ export default function Root() {
               <div className="sr-only" aria-live="polite"></div>
             </form>
             <form method="post">
-              <button type="submit">New</button>
+              <button type="submit" disabled>
+                Pesquisar
+              </button>
             </form>
           </div>
           <nav>
             <ul>
               <li>
-                <a href={`/contacts/1`}>Your Name</a>
+                <a href={`/`}>Home</a>
               </li>
               <li>
-                <a href={`/contacts/2`}>Your Friend</a>
+                <a href={`/products`}>Produtos</a>
+              </li>
+              <li>
+                <a href={`/product-create`}>Inserir produto</a>
               </li>
             </ul>
           </nav>

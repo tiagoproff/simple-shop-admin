@@ -13,15 +13,15 @@ interface ResponseRequest<T> {
   data: T;
 }
 
-interface ProductData extends Data {
+interface ProductsData extends Data {
   products: Product[];
 }
 
-export interface GetProductsResponse extends ResponseRequest<ProductData> {}
+export interface GetProductsResponse extends ResponseRequest<ProductsData> {}
+export interface GetProductResponse extends ResponseRequest<Product> {}
+export interface CreateProductResponse extends ResponseRequest<Product> {}
 
-//const newBusinessUrl = process.env.REACT_APP_NEW_BUSINESS_URL;
-
-const CreateProduct = async (params: Product) => {
+const CreateProduct = async (params: Partial<Product>) => {
   return await api.post(`products/add`, params);
 };
 
@@ -37,33 +37,6 @@ const RemoveProduct = async (productId: number) => {
   return await api.delete(`products/${productId}`);
 };
 
-/*
-fetch('https://dummyjson.com/products/add', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    title: 'BMW Pencil',
-    
-  }),
-})
-  .then((res) => res.json())
-  .then(console.log);
-*/
-/*
-const UpdateProduct = async (
-  applicationId,
-  versionNumber,
-  customerId,
-  params: CustomerDTO
-) => {
-  return await api.put(
-    `${newBusinessUrl}applications/${applicationId}/versions/${versionNumber}/customers/${customerId}`,
-    params.customer
-  );
-};
-
-
-*/
 const productService = {
   CreateProduct,
   //UpdateProduct,
