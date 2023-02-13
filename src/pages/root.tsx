@@ -1,21 +1,9 @@
-import { useEffect, useState } from 'react';
-
-import Card from '../components/card';
 import ConfirmRemove from 'components/confirm-remove';
 
-import service, { GetProductsResponse } from 'services/product-service';
-import Product from 'interfaces/product';
 import { DialogProvider } from 'hooks/useDialog';
+import { Outlet } from 'react-router-dom';
 
 export default function Root() {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    service
-      .GetProducts()
-      .then((data: GetProductsResponse) => setProducts(data.data.products));
-  }, []);
-
   return (
     <>
       <DialogProvider>
@@ -50,18 +38,7 @@ export default function Root() {
           </nav>
         </div>
         <div id="detail">
-          <div
-            className="products"
-            style={{
-              display: 'grid',
-              gap: 16,
-              gridTemplateColumns: '1fr 1fr 1fr',
-            }}
-          >
-            {products.map(({ id, thumbnail }) => (
-              <Card key={id} productId={id} thumbnail={thumbnail} />
-            ))}
-          </div>
+          <Outlet />
         </div>
       </DialogProvider>
     </>
