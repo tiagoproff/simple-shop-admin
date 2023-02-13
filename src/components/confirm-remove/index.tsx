@@ -1,15 +1,18 @@
 import Button from 'components/button';
-import Dialog, {
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from 'lib/dialog';
 
 import { useDialog, useDialogDispatch } from 'hooks/useDialog';
 
+import {
+  Buttons,
+  DialogActions,
+  DialogConteiner,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from './style';
+
 export default function ConfirmRemove() {
-  const { show, message, onConfirm } = useDialog();
+  const { show, title, message, onConfirm } = useDialog();
   const dispatch = useDialogDispatch();
 
   const handleClose = () => {
@@ -25,22 +28,27 @@ export default function ConfirmRemove() {
   };
 
   return (
-    <Dialog open={show} onClose={handleClose}>
-      <DialogTitle>{message}</DialogTitle>
+    <DialogConteiner open={show} onClose={handleClose}>
+      <DialogTitle>{title}</DialogTitle>
       <DialogContent>
-        <DialogContentText>
-          Let Google help apps determine location. This means sending anonymous
-          location data to Google, even when no apps are running.
-        </DialogContentText>
+        <DialogContentText>{message}</DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color="primary">
-          não
-        </Button>
-        <Button onClick={handleConfirm} color="primary" autoFocus>
-          excluir
-        </Button>
+        <Buttons>
+          <Button style={styles.buttonConfirm} onClick={handleClose}>
+            excluir
+          </Button>
+          <Button onClick={handleConfirm} autoFocus>
+            não
+          </Button>
+        </Buttons>
       </DialogActions>
-    </Dialog>
+    </DialogConteiner>
   );
 }
+
+const styles = {
+  buttonConfirm: {
+    backgroundColor: '#F80059',
+  },
+};

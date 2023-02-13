@@ -22,7 +22,12 @@ interface DialogProps extends PropsWithChildren {
 
 export const DialogContext = createContext(false);
 
-export default function Dialog({ children, open, onClose }: DialogProps) {
+export default function Dialog({
+  children,
+  open,
+  onClose,
+  ...props
+}: DialogProps) {
   const [isOpen, setIsOpen] = useState(open);
 
   useEffect(() => {
@@ -40,7 +45,7 @@ export default function Dialog({ children, open, onClose }: DialogProps) {
   return open ? (
     <DialogContext.Provider value={isOpen}>
       <DialogBackground>
-        <DialogConteiner>{children}</DialogConteiner>
+        <DialogConteiner {...props}>{children}</DialogConteiner>
       </DialogBackground>
     </DialogContext.Provider>
   ) : null;

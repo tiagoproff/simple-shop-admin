@@ -7,6 +7,7 @@ import {
 
 export const initialState = {
   show: false,
+  title: '',
   message: '',
 };
 
@@ -18,6 +19,7 @@ const dialogReducer = (
     case SHOW_CONFIRM: {
       return {
         show: true,
+        title: action.title,
         message: action.message,
         onConfirm: action.onConfirm,
       };
