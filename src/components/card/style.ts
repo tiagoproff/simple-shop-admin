@@ -34,12 +34,12 @@ export const Prices = styled.div`
 `;
 
 export const Price = styled.span`
-  color: red;
-  text-decoration-line: line-through;
+  /*color: red;
+  text-decoration-line: line-through;*/
 
   &::before {
     content: 'R$ ';
-    color: yellow;
+    /*color: yellow;*/
     font-weight: 600;
   }
 `;

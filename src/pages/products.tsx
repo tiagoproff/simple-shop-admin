@@ -23,9 +23,18 @@ export default function Products() {
         gridTemplateColumns: '1fr 1fr 1fr',
       }}
     >
-      {products.map(({ id, title, thumbnail }) => (
-        <Card key={id} productId={id} title={title} thumbnail={thumbnail} />
-      ))}
+      {products.map(
+        ({ id, title, thumbnail, price, discountPercentage = 0 }) => (
+          <Card
+            key={id}
+            productId={id}
+            title={title}
+            thumbnail={thumbnail}
+            price={price}
+            discountPercentage={discountPercentage}
+          />
+        )
+      )}
     </div>
   );
 }

@@ -18,16 +18,32 @@ import {
   Prices,
   Title,
 } from './style';
+import Product from 'interfaces/product';
 
 interface CardProps extends React.BaseHTMLAttributes<any> {
+  discountPercentage: number;
   productId: number;
+  price: number;
   thumbnail?: string;
+  title: string;
+}
+
+function formatCurrence(value: number): string {
+  return value.toFixed(2).replace('.', ',');
+}
+
+function discount(price: number, discount: number) {
+  const priceWithDiscount = price * (1 - discount / 100);
+
+  return formatCurrence(priceWithDiscount);
 }
 
 export default function Card({
+  discountPercentage,
+  productId,
+  price,
   thumbnail,
   title,
-  productId,
   ...props
 }: CardProps) {
   const dialog = useDialogDispatch();
@@ -39,8 +55,8 @@ export default function Card({
         <Title>{title}</Title>
         <Footer>
           <Prices>
-            <Price>100</Price>
-            <Price>40</Price>
+            <Price style={styles.priceLagged}>{formatCurrence(price)}</Price>
+            <Price>{discount(price, discountPercentage)}</Price>
           </Prices>
           <Buttons style={{ justifyContent: 'flex-end' }}>
             <Button
@@ -64,3 +80,11 @@ export default function Card({
     </Container>
   );
 }
+
+const styles = {
+  priceLagged: {
+    color: '#F80059',
+    fontSize: 12,
+    textDecorationLine: 'line-through',
+  },
+};
