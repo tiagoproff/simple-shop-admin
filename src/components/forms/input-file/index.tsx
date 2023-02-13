@@ -1,7 +1,9 @@
 import { useState } from 'react';
+
+import Button from 'components/button';
 import Control from '../control';
 
-import { Base, Button, Legend, Input } from './style';
+import { Base, Legend, Input } from './style';
 
 interface InputProps extends React.InputHTMLAttributes<any> {
   label?: string;
@@ -30,7 +32,9 @@ export default function InputFile({ label, error, ...props }: InputProps) {
 
   return (
     <Control label={label} error={error}>
-      <Button>Procurar</Button>
+      <Button style={{ backgroundColor: 'white', color: 'black' }}>
+        Procurar
+      </Button>
       <Base className="file-upload mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         <Input
           type="file"
