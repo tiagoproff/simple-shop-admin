@@ -1,3 +1,4 @@
+import { Link, Navigate } from 'react-router-dom';
 import { FiTrash2 } from 'react-icons/fi';
 
 import Button from '../button';
@@ -37,7 +38,7 @@ export default function Card({ thumbnail, productId, ...props }: CardProps) {
           <Buttons style={{ justifyContent: 'flex-end' }}>
             <Button
               color="#F80059"
-              onClick={async (e) => {
+              onClick={(e) => {
                 dialog({
                   type: SHOW_CONFIRM,
                   message: 'Deseja remover este produto?',
@@ -47,7 +48,9 @@ export default function Card({ thumbnail, productId, ...props }: CardProps) {
             >
               <FiTrash2 color="#FFF" />
             </Button>
-            <Button>Editar</Button>
+            <Link to={`/product/${productId}`}>
+              <Button>Editar</Button>
+            </Link>
           </Buttons>
         </Footer>
       </Content>
