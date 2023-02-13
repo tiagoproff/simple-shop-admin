@@ -14,6 +14,7 @@ export const Primary = styled.button((props) => {
 export const Primary = styled.button`
   background: ${(props) => props.color || '#007ff8'};
   border-radius: 32px;
+  color: white;
   padding: 8px 16px;
 `;
 
