@@ -3,6 +3,11 @@ import { FiTrash2 } from 'react-icons/fi';
 
 import Button from '../button';
 
+import service from 'services/product-service';
+
+import { useDialogDispatch } from 'hooks/useDialog';
+import { SHOW_CONFIRM } from 'interfaces/dialog';
+
 import {
   Buttons,
   Container,
@@ -13,23 +18,25 @@ import {
   Prices,
   Title,
 } from './style';
-import { useDialogDispatch } from 'hooks/useDialog';
-import { SHOW_CONFIRM } from 'interfaces/dialog';
-import service from 'services/product-service';
 
 interface CardProps extends React.BaseHTMLAttributes<any> {
   productId: number;
   thumbnail?: string;
 }
 
-export default function Card({ thumbnail, productId, ...props }: CardProps) {
+export default function Card({
+  thumbnail,
+  title,
+  productId,
+  ...props
+}: CardProps) {
   const dialog = useDialogDispatch();
 
   return (
     <Container {...props}>
       <Image src={thumbnail} alt="" srcSet={thumbnail} />
       <Content>
-        <Title>Product</Title>
+        <Title>{title}</Title>
         <Footer>
           <Prices>
             <Price>100</Price>
@@ -41,7 +48,7 @@ export default function Card({ thumbnail, productId, ...props }: CardProps) {
               onClick={(e) => {
                 dialog({
                   type: SHOW_CONFIRM,
-                  message: 'Deseja remover este produto?',
+                  title: 'Deseja remover este produto?',
                   onConfirm: () => service.RemoveProduct(productId),
                 });
               }}

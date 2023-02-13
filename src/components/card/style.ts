@@ -20,11 +20,13 @@ export const Title = styled.p`
   line-height: 100%;
 `;
 export const Content = styled.div``;
+
 export const Footer = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
 `;
+
 export const Prices = styled.div`
   display: flex;
   flex-direction: column;
@@ -41,6 +43,7 @@ export const Price = styled.span`
     font-weight: 600;
   }
 `;
+
 export const Buttons = styled.div`
   display: flex;
   gap: 8px;
