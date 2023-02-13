@@ -6,4 +6,15 @@ export const Input = styled.input`
   height: 1.1876em;
   outline: none;
   z-index: 1;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
 `;
